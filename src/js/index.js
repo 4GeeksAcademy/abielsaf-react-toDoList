@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import TodoList from "./component/TodoList.jsx";
+import Home from "./component/Home.jsx";
 
 //render your react application
-ReactDOM.render(<TodoList />, document.querySelector("#app"));
+ReactDOM.render(<Home/>, document.querySelector("#app"));
