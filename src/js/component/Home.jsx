@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import TodoList from "./TodoList.jsx";
+import ToDoList from "./ToDoList.jsx";
 
 //create your first component
 		const Home = () => {
-		return (<TodoList />
+		return (<ToDoList />
 		
 		
 	);

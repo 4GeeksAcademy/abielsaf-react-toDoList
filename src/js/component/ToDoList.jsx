@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-function TodoList () {
+function ToDoList () {
   const [todos, setTodos] = useState([])
   const [inputValue, setInputValue] = useState('')
 
@@ -40,5 +40,5 @@ function handleDelete(index){
   )
 }
 
-export default TodoList;
+export default ToDoList;
 
