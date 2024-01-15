@@ -2,6 +2,7 @@ body {
   background-image: url('https://img.freepik.com/vector-gratis/diseno-fondo-abstracto-blanco_23-2148825582.jpg?w=1380&t=st=1705342014~exp=1705342614~hmac=b84442283ae65eb78518c45948e2ec8b4dcdcda10870c131d653847b0f0b39d6');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 h1 {
   font-family: "Times New Roman", Times, serif;
