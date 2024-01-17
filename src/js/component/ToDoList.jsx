@@ -1,44 +1,66 @@
 import React, { useState } from 'react'
 
 
-function ToDoList () {
-  const [todos, setTodos] = useState([])
-  const [inputValue, setInputValue] = useState('')
+const ToDoList = () => {
 
-function handleChange(e){
-  setInputValue(e.target.value)
-}
+  const [inputValue, setInputValue] = useState('');
+  const [list, setList] = useState([]);
 
-function handleSubmit(e){
-  e.preventDefault()
-  setTodos([...todos, inputValue])
-  setInputValue('')
-}
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  }
 
-function handleDelete(index){
-  const newTodos = [...todos]
-  newTodos.splice(index, 1)
-  setTodos(newTodos)
-}
+  const addItem = () => {
+    if (inputValue.trim() !== '') {
+      setList([inputValue, ...list]);
+      setInputValue('');
+    } else {
+      alert("This box can't be empty")
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addItem();
+    }
+  }
+
+  const deleteItem = (index) => {
+    const newList = [...list];
+    newList.splice(index, 1);
+    setList(newList);
+  }
+
   return (
-    <div className='text-center'>
-      <h1>To do List</h1>
-      <br></br>
-      <form>
-        <input type='text' value={inputValue} onChange={handleChange}/>
-        <button className="add-button" onClick={handleSubmit}>Add to do!</button>
-      </form>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}
-          <button className="delete-button" onClick={() =>handleDelete(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-      <p> Tasks left: {todos.length} </p>
+    <div className="text-center">
+      <h1> To do list!</h1>
+      <input
+        type="text"
+        onChange={handleInputChange}
+        value={inputValue}
+        onKeyDown={handleKeyDown}
+        placeholder="Add tasks here"
+      />
+      <button className="add-button" onClick={addItem}>Add to do!</button>
+
+      {list.length > 0 && (
+        <ul>
+          {list.map((el, i) => (
+            <li key={i}>
+              {el}
+              <button className="delete-button" onClick={() => deleteItem(i)}>
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      
+      <p>{list.length === 0 ? "No tasks left, good job!" : list.length+[" Tasks left"]}</p>
     </div>
-  )
-}
+  );
+};
 
 export default ToDoList;
 
